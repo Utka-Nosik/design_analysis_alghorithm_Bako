@@ -1,1 +1,10 @@
+org\example\algorithms\DeterministicSelect.class
 org\example\Main.class
+org\example\domain\Point.class
+org\example\metrics\DepthTracker.class
+org\example\metrics\Metrics.class
+org\example\util\AlgorithmUtils.class
+org\example\algorithms\ClosestPair.class
+org\example\algorithms\QuickSort.class
+org\example\algorithms\MergeSort.class
+org\example\metrics\CsvWriter.class

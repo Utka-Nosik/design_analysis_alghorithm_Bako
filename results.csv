@@ -1,0 +1,4 @@
+mvn exec:java -Dexec.args="select 100000 12345"Algorithm,InputSize,TimeMillis,Comparisons,Allocations,MaxDepth
+mergesort,50000,15,1370375,1,13
+select,100000,19,0,0,0
+closest,2000,8,0,0,0

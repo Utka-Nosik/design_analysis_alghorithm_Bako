@@ -25,5 +25,16 @@
 ### Closest Pair of Points
 - **Recurrence**: `T(n) = 2T(n/2) + O(n)`
 - **Analysis**: The algorithm divides the set of points into two halves (`2T(n/2)`) and recursively finds the closest pair in each. The "conquer" step involves checking points in a vertical "strip" of width `2δ`. This step can be performed in `O(n)` time (by pre-sorting points by y-coordinate, though our simple version re-sorts, making it `O(n log n)` in the conquer step). Assuming a linear-time strip check, the Master Theorem (Case 2) gives a runtime of `O(n log n)`.
+- 
+## 3. Plots and Measurements Summary
 
----
+### Time vs. Input Size
+
+![Execution Time](images/time_vs_n.png)
+
+### Recursion Depth vs. Input Size
+
+![Recursion Depth](images/depth_vs_n.png)
+
+### Summary
+The graphs show that all algorithms demonstrate the expected complexity. QuickSort turns out to be slightly faster than MergeSort on random data. The recursion depth of QuickSort grows more slowly due to optimization

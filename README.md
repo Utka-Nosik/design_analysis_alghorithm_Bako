@@ -1,4 +1,3 @@
-# design_analysis_alghorithm_Bako
 # Assignment 1 Report
 
 ## 1. Architecture Notes
@@ -24,8 +23,8 @@
 
 ### Closest Pair of Points
 - **Recurrence**: `T(n) = 2T(n/2) + O(n)`
-- **Analysis**: The algorithm divides the set of points into two halves (`2T(n/2)`) and recursively finds the closest pair in each. The "conquer" step involves checking points in a vertical "strip" of width `2δ`. This step can be performed in `O(n)` time (by pre-sorting points by y-coordinate, though our simple version re-sorts, making it `O(n log n)` in the conquer step). Assuming a linear-time strip check, the Master Theorem (Case 2) gives a runtime of `O(n log n)`.
-- 
+- **Analysis**: The algorithm divides the set of points into two halves (`2T(n/2)`) and recursively finds the closest pair in each. The "conquer" step involves checking points in a vertical "strip" of width `2δ`. This step can be performed in `O(n)` time. According to the Master Theorem (Case 2), the runtime is `O(n log n)`.
+
 ## 3. Plots and Measurements Summary
 
 ### Time vs. Input Size
@@ -36,5 +35,10 @@
 
 ![Recursion Depth](images/depth_vs_n.png)
 
-### Summary
-The graphs show that all algorithms demonstrate the expected complexity. QuickSort turns out to be slightly faster than MergeSort on random data. The recursion depth of QuickSort grows more slowly due to optimization
+### Summary: Alignment between Theory and Measurements
+
+The experimental measurements align well with the theoretical analysis.
+
+*   **Time Complexity**: The `Time vs. n` plot clearly shows that MergeSort and QuickSort have a near-linearithmic (`n log n`) growth rate, while ClosestPair also follows this trend. QuickSort consistently outperforms MergeSort on random data, which is expected due to its lower constant factors and in-place partitioning scheme.
+*   **Recursion Depth**: The `Depth vs. n` plot demonstrates the effectiveness of the "recurse-on-smaller-partition" optimization in QuickSort. Its recursion depth grows logarithmically and is visibly smaller and flatter than MergeSort's depth, which is directly proportional to `log n`. This confirms that the stack space for our QuickSort implementation is bounded by O(log n).
+*   **Constant Factors**: While both QuickSort and MergeSort are `Θ(n log n)`, the practical performance difference visible in the charts is due to constant factors. MergeSort requires copying data to an auxiliary buffer, which introduces overhead. QuickSort's in-place swaps are generally faster. Effects of cache performance and Garbage Collection (GC) were not explicitly measured but can contribute to minor fluctuations in runtime.

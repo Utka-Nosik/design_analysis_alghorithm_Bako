@@ -2,6 +2,7 @@ package org.example.algorithms;
 
 import org.example.metrics.DepthTracker;
 import org.example.metrics.Metrics;
+import org.example.util.AlgorithmUtils;
 import java.util.Random;
 
 public class QuickSort {
@@ -40,25 +41,7 @@ public class QuickSort {
 
     private static int partition(int[] a, int lo, int hi, Metrics metrics) {
         int randomIndex = lo + RANDOM.nextInt(hi - lo + 1);
-        swap(a, randomIndex, hi);
-        int pivot = a[hi];
-
-        int i = lo - 1;
-        for (int j = lo; j < hi; j++) {
-            metrics.incrementComparisons();
-            if (a[j] < pivot) {
-                i++;
-                swap(a, i, j);
-            }
-        }
-
-        swap(a, i + 1, hi);
-        return i + 1;
-    }
-
-    private static void swap(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+        AlgorithmUtils.swap(a, randomIndex, hi);
+        return AlgorithmUtils.partition(a, lo, hi, metrics);
     }
 }
